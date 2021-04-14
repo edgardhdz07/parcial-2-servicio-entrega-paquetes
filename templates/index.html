@@ -1,0 +1,20 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+  <title>Index</title>
+  <h1>Página principal</h1>
+  <h2>Pulse el botón del modulo a usar</h2>
+  <br>
+  <br>
+
+  <a href='/facturas' class="btn btn-primary" >Facturas</a>
+  <input type="hidden" name="_method" value="PUT">
+
+  <a href='/clientes' class="btn btn-success">Clientes</a>
+  <input type="hidden" name="_method" value="PUT">
+
+  <a href='/paquetes' class="btn btn-warning">Paquetes</a>
+  <input type="hidden" name="_method" value="PUT">
+
+{% endblock %}
+
