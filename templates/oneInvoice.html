@@ -1,0 +1,96 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+  <h1>Factura encontrada</h1>
+  <hr>
+  <table class="table table-striped">
+      <thead>
+     <tr>
+      <th></th>
+      <th></th>
+      <th colspan="5" style="text-align:center">Cliente</th>
+      <th colspan="4" style="text-align:center">Items</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th colspan="2" style="text-align:center">Acciones</th>
+     </tr>
+     <tr>
+         <th>Id</th>
+        <th>Fecha</th>
+        <th>Id</th>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>Dirección</th>
+         <th>Código postal</th>
+         <th>Id</th>
+         <th>Precio</th>
+         <th>Costo</th>
+         <th></th>
+         <th>Total</th>
+     </tr>
+    </thead>
+   <tbody>
+    <tr>
+        <td>{{invoice.id}}</td>
+        <td>{{invoice.date}}</td>
+        <td>{{invoice.client.id}}</td>
+        <td>{{invoice.client.name}}</td>
+        <td>{{invoice.client.Last_name}}</td>
+        <td>{{invoice.client.address}}</td>
+        <td>{{invoice.client.postal_code}}</td>
+        <td>
+            <table>
+        {% for package in invoice["items"] %}
+                <tr>
+                    <td>{{package.id}}</td>
+               </tr>
+        {% endfor %}
+            </table>
+        </td>
+        <td>
+            <table>
+        {% for package in invoice["items"] %}
+                <tr>
+                    <td>{{package.price}}</td>
+               </tr>
+        {% endfor %}
+            </table>
+        </td>
+        <td>
+            <table>
+        {% for package in invoice["items"] %}
+                <tr>
+                    <td>{{package.track.cost}}</td>
+               </tr>
+        {% endfor %}
+            </table>
+        </td>
+        <td></td>
+        <td>{{invoice.total}}</td>
+        <th></th>
+        <th></th>
+        <th></th>
+        <td></td>
+        <td>
+            <a href="facturas/editar/{{invoice.id}}" class="btn btn-default pull-left">Edit</a>
+            <input type="hidden" name="_method" value="PUT">
+            <form action="{{url_for('app_invoices.delete_invoice', invoice_id=invoice.id)}}" method="post">
+                <input type="hidden" name="_method" value="DELETE">
+                <input type="submit" value="Delete" class="btn btn-danger">
+            </form>
+        </td>
+        <td>
+            <a href="facturas/añadir_paquete/{{invoice.id}}" class="btn btn-default pull-left">Add package</a>
+            <input type="hidden" name="_method" value="PUT">
+            <a href="facturas/eliminar_paquete/{{invoice.id}}" class="btn btn-danger">Delete package</a>
+            <input type="hidden" name="_method" value="DELETE">
+        </td>
+    </tr>
+   </tbody>
+
+  </table>
+{% endblock %}
+

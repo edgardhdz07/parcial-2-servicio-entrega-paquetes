@@ -1,0 +1,42 @@
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Añadir factura</title>
+</head>
+
+<style>
+  *{margin: 0; padding: 0; }
+  body{background: #ecf1f4 font-family: sans-serif;}
+
+  .form-wrap{width:320px; background: #A69995; padding: 40px 20px; box-sizing: border-box; position: fixed; left: 50%; top:50%;
+  transform: translate(-50%,-50%);}
+  h1{text-align: center; color: #fff; font-weight: normal; margin-bottom: 20px;}
+
+  input{width: 100%; background: none; border: 1px solid #fff; border-radius: 3px; padding: 6px 20px; box-sizing: border-box; margin-bottom: 20px; font-size: 16px;
+  color: #fff;}
+
+  input[type="submit"]{background: #44c200; border: 0; cursor: pointer; color: #3e3d3d;}
+  input[type="submit"]:hover{background: #a4b15c; transition: .6s;}
+  ::placeholder{color: #fff;}
+</style>
+
+<body>
+  <div class="form-wrap">
+    <form action="" , method="post">
+      <h1>Añadir factura</h1>
+      <input type="number" name="id" placeholder="id Factura">
+      <input type="date" name="date" placeholder="Fecha">
+      <input type="number" name="id client" placeholder="id Cliente">
+      <input type="text" name="name" placeholder="Nombre">
+      <input type="text" name="last_name" placeholder="Apellido">
+      <input type="text" name="address" placeholder="Dirección">
+      <input type="number" name="postal_code" placeholder="Código postal">
+      <input type="number" name="id package" placeholder="id Paquete">
+      <br>
+      <br>
+      <input type="submit" value="Añadir">
+    </form>
+  </div>
+</body>
+</html>
+

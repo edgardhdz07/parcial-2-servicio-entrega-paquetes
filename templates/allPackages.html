@@ -1,0 +1,51 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+  <h1>Lista de paquetes</h1>
+  <a class="btn btn-success" href="/paquetes/añadir"> Añadir paquete</a>
+  <hr>
+  <table class="table table-striped">
+    <thead>
+     <tr>
+      <th>Id</th>
+      <th>Nombre</th>
+      <th>Precio</th>
+      <th colspan="4" style="text-align:center">Trayectoria</th>
+     </tr>
+    <tr>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th>Id</th>
+        <th>Origen</th>
+        <th>Destino</th>
+        <th>Costo</th>
+    </tr>
+    </thead>
+   <tbody>
+    {% for package in Packages %}
+    <tr>
+        <td>{{package.id}}</td>
+        <td>{{package.name}}</td>
+        <td>{{package.price}}</td>
+        <td>{{package.track.id}}</td>
+        <td>{{package.track.origin}}</td>
+        <td>{{package.track.destination}}</td>
+        <td>{{package.track.cost}}</td>
+        <td></td>
+        <td>
+            <a href="paquetes/editar/{{package.id}}" class="btn btn-default pull-right">Edit</a>
+            <input type="hidden" name="_method" value="PUT">
+        </td>
+        <td>
+            <form action="{{url_for('app_packages.delete_package', package_id=package.id)}}" method="post">
+            <input type="hidden" name="_method" value="DELETE">
+            <input type="submit" value="Delete" class="btn btn-danger">
+            </form>
+        </td>
+    </tr>
+   </tbody>
+      {% endfor %}
+  </table>
+{% endblock %}
+
